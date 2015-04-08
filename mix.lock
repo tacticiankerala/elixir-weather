@@ -1,0 +1,5 @@
+%{"hackney": {:hex, :hackney, "1.1.0"},
+  "httpoison": {:hex, :httpoison, "0.6.2"},
+  "idna": {:hex, :idna, "1.0.2"},
+  "quinn": {:git, "git://github.com/nhu313/Quinn.git", "2680385d8542213b362d42ecab64be444d0ac529", []},
+  "ssl_verify_hostname": {:hex, :ssl_verify_hostname, "1.0.4"}}
