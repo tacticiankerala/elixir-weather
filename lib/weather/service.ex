@@ -38,7 +38,7 @@ defmodule Weather.Service do
   def scan_data(xml_string) do
     xml_string
     |> Quinn.parse
-    |> Quinn.find [:current, :temperature]
+    |> Quinn.find([:current, :temperature])
   end
 
   def extract_temperature([%{attr: [value: temperature, min: _, max: _, unit: _]}]) do
