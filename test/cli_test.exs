@@ -1,6 +1,5 @@
 defmodule Weather.CLITest do
   use ExUnit.Case
-  import ExUnit.CaptureIO
   import Weather.CLI
 
   test "parses -h as help" do
