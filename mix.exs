@@ -5,8 +5,8 @@ defmodule Weather.Mixfile do
     [app: :weather,
      version: "0.0.1",
      elixir: "~> 1.0",
-     escript: escript_config,
-     deps: deps]
+     escript: escript_config(),
+     deps: deps()]
   end
 
   # Configuration for the OTP application
