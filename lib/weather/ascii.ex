@@ -6,8 +6,9 @@ defmodule Weather.ASCII do
   end
 
   def convert_to_ascii_art(list) do
-    [head | tail] = (for char <- list, do: ascii_char(char))
-    |> Enum.map(&String.split(&1, "\n"))
+    [head | tail] = list
+                    |> Enum.map(&ascii_char/1)
+                    |> Enum.map(&String.split(&1, "\n"))
 
     tail
     |> Enum.reduce(head, &join_char/2)
