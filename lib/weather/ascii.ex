@@ -1,26 +1,37 @@
 defmodule Weather.ASCII do
   def pretty_print(str) do
     str
-    |> String.to_char_list
+    |> String.to_charlist
     |> convert_to_ascii_art
-    |> IO.puts
   end
 
   def convert_to_ascii_art(list) do
-    ascii_list = for char <- list, do: ascii_char(char)
-    ascii_list_split = [head | tail] = Enum.map(ascii_list, &String.split(&1, "\n"))
-    Enum.reduce(tail, head, fn val, acc -> Enum.zip(acc, val) |> Enum.map(fn {left, right} -> left <> "  " <>right end) end)
+    [head | tail] = (for char <- list, do: ascii_char(char))
+    |> Enum.map(&String.split(&1, "\n"))
+
+    tail
+    |> Enum.reduce(head, &join_char/2)
     |> Enum.join("\n")
   end
 
-  def ascii_char(number) when (number - ?0) >= 0 and (number - ?0) <= 9 do
-    {:ok , str} = File.read("ascii_chars.txt")
-    Enum.at(String.split(str, "#\n"), number - ?0)
+  defp join_char(val, acc) do
+    acc
+    |> Enum.zip(val)
+    |> Enum.map(fn {left, right} -> left <> "  " <> right end)
   end
 
-  def ascii_char(?.) do
+  defp ascii_char(number) when (number - ?0) >= 0 and (number - ?0) <= 9 do
     {:ok , str} = File.read("ascii_chars.txt")
-    List.last String.split(str, "#\n")
+    str
+    |> String.split("#\n")
+    |> Enum.at(number - ?0)
+  end
+
+  defp ascii_char(?.) do
+    {:ok , str} = File.read("ascii_chars.txt")
+    str
+    |> String.split("#\n")
+    |> List.last
   end
 
 end

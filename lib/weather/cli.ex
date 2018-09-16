@@ -7,6 +7,7 @@ defmodule Weather.CLI do
     |> parse_args
     |> process
     |> pretty_print
+    |> IO.puts
   end
 
   def parse_args(argv) do
