@@ -1,7 +1,7 @@
 Weather
 =======
 
-![alt tag](https://dl.dropboxusercontent.com/u/78582077/weather_app_screenshot.png)
+![screenshot](https://i.paste.pics/3R8A7.png)
 
 How to run?
 =======
